@@ -1,0 +1,74 @@
+---
+title: Getting Started with Next.js 14
+date: 2024-12-29
+description: A comprehensive guide to building modern web applications with Next.js 14 and the App Router.
+tags:
+  - nextjs
+  - react
+  - web-development
+published: true
+---
+
+Next.js 14 brings significant improvements to the developer experience and performance. In this post, we'll explore the key features and how to get started.
+
+## The App Router
+
+The App Router is now the recommended way to build Next.js applications. It provides:
+
+- **Server Components by default** - Better performance and smaller bundle sizes
+- **Nested layouts** - Share UI across routes while preserving state
+- **Streaming** - Progressive rendering for improved user experience
+
+## Setting Up Your Project
+
+Getting started is straightforward:
+
+```bash
+npx create-next-app@latest my-app --typescript --tailwind --app
+cd my-app
+npm run dev
+```
+
+## Server Components vs Client Components
+
+By default, all components in the App Router are Server Components. To use client-side features like `useState` or `useEffect`, add the `'use client'` directive:
+
+```tsx
+'use client';
+
+import { useState } from 'react';
+
+export function Counter() {
+  const [count, setCount] = useState(0);
+  
+  return (
+    <button onClick={() => setCount(count + 1)}>
+      Count: {count}
+    </button>
+  );
+}
+```
+
+## Data Fetching
+
+Fetching data in Server Components is simple - just use `async/await`:
+
+```tsx
+async function BlogPosts() {
+  const posts = await fetch('https://api.example.com/posts');
+  const data = await posts.json();
+  
+  return (
+    <ul>
+      {data.map((post) => (
+        <li key={post.id}>{post.title}</li>
+      ))}
+    </ul>
+  );
+}
+```
+
+## Conclusion
+
+Next.js 14 provides an excellent foundation for building modern web applications. The combination of Server Components, the App Router, and built-in optimizations makes it a great choice for your next project.
+

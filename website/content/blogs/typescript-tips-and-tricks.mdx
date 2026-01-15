@@ -1,0 +1,78 @@
+---
+title: TypeScript Tips and Tricks for Better Code
+date: 2024-12-25
+description: Practical TypeScript patterns and techniques to write more maintainable and type-safe code.
+tags:
+  - typescript
+  - programming
+published: true
+---
+
+TypeScript has become an essential tool for building robust JavaScript applications. Here are some tips and tricks I've learned along the way.
+
+## Use `satisfies` for Better Type Inference
+
+The `satisfies` operator lets you validate a type while preserving the most specific type:
+
+```typescript
+const config = {
+  port: 3000,
+  host: 'localhost',
+} satisfies Record<string, string | number>;
+
+// config.port is inferred as number, not string | number
+console.log(config.port.toFixed()); // Works!
+```
+
+## Discriminated Unions for State Management
+
+Use discriminated unions to handle different states elegantly:
+
+```typescript
+type LoadingState = { status: 'loading' };
+type SuccessState = { status: 'success'; data: string[] };
+type ErrorState = { status: 'error'; message: string };
+
+type State = LoadingState | SuccessState | ErrorState;
+
+function render(state: State) {
+  switch (state.status) {
+    case 'loading':
+      return <Spinner />;
+    case 'success':
+      return <List items={state.data} />;
+    case 'error':
+      return <Error message={state.message} />;
+  }
+}
+```
+
+## Template Literal Types
+
+Create precise string types with template literals:
+
+```typescript
+type EventName = 'click' | 'focus' | 'blur';
+type Handler = `on${Capitalize<EventName>}`;
+// Handler = 'onClick' | 'onFocus' | 'onBlur'
+```
+
+## `const` Assertions for Immutable Data
+
+Use `as const` to create readonly literal types:
+
+```typescript
+const routes = {
+  home: '/',
+  blog: '/blog',
+  about: '/about',
+} as const;
+
+type Route = typeof routes[keyof typeof routes];
+// Route = '/' | '/blog' | '/about'
+```
+
+## Conclusion
+
+These patterns will help you write more expressive and type-safe TypeScript code. The key is to leverage the type system to catch errors at compile time rather than runtime.
+
