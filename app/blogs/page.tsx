@@ -20,8 +20,7 @@ export default function BlogsPage() {
           <SubscribeButton />
         </div>
         <p className="leading-relaxed">
-          My personal collection of ideas, coding insights, and tips. Most entries
-          remain private, with select ones published here. This site serves as a
+          My personal collection of ideas, coding insights, and tips. This site serves as a
           public outlet for some of my musings.
         </p>
       </header>
