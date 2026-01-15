@@ -3,13 +3,13 @@ function normalizeSiteUrl(input: string): string {
   try {
     return new URL(trimmed).toString().replace(/\/+$/, '');
   } catch {
-    return 'https://yourwebsite.com';
+    return 'https://divyanshrai655.github.io/';
   }
 }
 
 export const site = {
   /** Set `NEXT_PUBLIC_SITE_URL` in prod. Example: https://divyanshrai.com */
-  url: normalizeSiteUrl(process.env.NEXT_PUBLIC_SITE_URL || 'https://yourwebsite.com'),
+  url: normalizeSiteUrl(process.env.NEXT_PUBLIC_SITE_URL || 'https://divyanshrai655.github.io/'),
   name: 'Divyansh Rai',
   /** Third-person bio helps “name SEO” */
   description:
