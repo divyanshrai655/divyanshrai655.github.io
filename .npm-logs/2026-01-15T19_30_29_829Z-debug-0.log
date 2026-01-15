@@ -10,3 +10,9 @@
 9 verbose logfile logs-max:10 dir:/Users/divyansh.rai/Desktop/projects/personal/website/.npm-logs/2026-01-15T19_30_29_829Z-
 10 verbose logfile /Users/divyansh.rai/Desktop/projects/personal/website/.npm-logs/2026-01-15T19_30_29_829Z-debug-0.log
 11 silly logfile done cleaning log files
+12 verbose cwd /Users/divyansh.rai/Desktop/projects/personal/website
+13 verbose os Darwin 24.6.0
+14 verbose node v25.2.1
+15 verbose npm  v11.6.2
+16 verbose exit 0
+17 info ok

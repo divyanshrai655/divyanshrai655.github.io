@@ -13,10 +13,10 @@ export default function BlogsPage() {
   const allTags = getAllTags(posts);
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 font-geist-mono">
       <header className="space-y-6">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <h1 className="text-4xl font-bold tracking-tight font-serif">Blogs</h1>
+        <h1 className="text-4xl font-bold tracking-tight">Blogs</h1>
           <SubscribeButton />
         </div>
         <p className="leading-relaxed">
