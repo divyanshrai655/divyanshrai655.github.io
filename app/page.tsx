@@ -8,18 +8,18 @@ export default function AboutPage() {
           Hi, I am Divyansh!
         </p>
         <p>
-          I'm a Machine Learning Engineer at Sprinklr, building scalable ML
-          systems from the ground up. Currently, I'm working on Agentic and RAG systems.
+          I&apos;m a Machine Learning Engineer at Sprinklr, building scalable ML
+          systems from the ground up. Currently, I&apos;m working on Agentic and RAG systems.
         </p>
         <p>
           I graduated from IIIT Allahabad, where I enjoyed my time experimenting with multimodal
           architectures on problems like Image Captioning and Visual Question Answering. Academic
-          curiosity never left; I'm still a &ldquo;systems&rdquo; geek at heart, constantly dissecting
+          curiosity never left; I&apos;m still a &ldquo;systems&rdquo; geek at heart, constantly dissecting
           interesting new ideas.
         </p>
         <p>
           My interests include reading books, occassional long distance running and trying out weird pawn breaks (not a pro). If
-          you're up for a game, catch me on chess.com (divyanshrai655).
+          you&apos;re up for a game, catch me on chess.com (divyanshrai655).
         </p>
       </section>
     </div>
