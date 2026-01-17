@@ -16,12 +16,11 @@ export default function BlogsPage() {
     <div className="space-y-8 font-geist-mono">
       <header className="space-y-6">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <h1 className="text-4xl font-bold tracking-tight">Blogs</h1>
+          <h1 className="text-4xl font-bold tracking-tight">Blogs</h1>
           <SubscribeButton />
         </div>
         <p className="leading-relaxed">
-          My personal collection of ideas, coding insights, and tips. This site serves as a
-          public outlet for some of my musings.
+          Findings and Personal Learnings
         </p>
       </header>
 
