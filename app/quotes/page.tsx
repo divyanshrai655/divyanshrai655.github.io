@@ -25,16 +25,18 @@ export default function QuotesPage() {
                         className="group relative p-6 rounded-lg border border-border bg-background hover:border-accent transition-all duration-300 hover:shadow-lg"
                     >
                         {/* Category badge */}
-                        <div className="absolute top-4 right-4">
-                            <span
-                                className={`text-xs px-2 py-1 rounded-full ${quote.category === 'Anime'
-                                    ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200'
-                                    : 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200'
-                                    }`}
-                            >
-                                {quote.category}
-                            </span>
-                        </div>
+                        {quote.category && (
+                            <div className="absolute top-4 right-4">
+                                <span
+                                    className={`text-xs px-2 py-1 rounded-full ${quote.category === 'Anime'
+                                        ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200'
+                                        : 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200'
+                                        }`}
+                                >
+                                    {quote.category}
+                                </span>
+                            </div>
+                        )}
 
                         {/* Quote text */}
                         <div className="pr-16">

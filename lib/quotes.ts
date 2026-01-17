@@ -4,7 +4,7 @@ import path from 'path';
 export interface Quote {
   text: string;
   author: string;
-  category: 'Anime' | 'Book';
+  category?: 'Anime' | 'Book';
 }
 
 export function getQuotes(): Quote[] {
