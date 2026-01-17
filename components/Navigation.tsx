@@ -8,6 +8,7 @@ import { site } from '@/lib/site';
 const navItems = [
   { href: '/', label: 'About' },
   { href: '/blogs', label: 'Blog' },
+  { href: '/quotes', label: 'Quotes' },
 ];
 
 const socialLinks = [
@@ -55,31 +56,30 @@ export function Navigation() {
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         {/* Left side: Social + Nav (kept together) */}
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-8">
-        <div className="flex items-center gap-4">
-          {socialLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              target={link.href.startsWith('mailto') ? undefined : '_blank'}
-              rel={link.href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
-              className="text-muted hover:text-foreground transition-colors"
-              aria-label={link.label}
-            >
-              {link.icon}
-            </Link>
-          ))}
-        </div>
+          <div className="flex items-center gap-4">
+            {socialLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                target={link.href.startsWith('mailto') ? undefined : '_blank'}
+                rel={link.href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
+                className="text-muted hover:text-foreground transition-colors"
+                aria-label={link.label}
+              >
+                {link.icon}
+              </Link>
+            ))}
+          </div>
 
           <ul className="flex gap-6 text-lg font-geist-mono">
             {navItems.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className={`transition-colors hover:text-accent ${
-                    isActive(item.href)
+                  className={`transition-colors hover:text-accent ${isActive(item.href)
                       ? 'font-medium text-foreground'
                       : 'text-muted'
-                  }`}
+                    }`}
                 >
                   {item.label}
                 </Link>

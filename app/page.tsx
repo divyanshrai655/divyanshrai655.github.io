@@ -7,7 +7,7 @@ export default function AboutPage() {
         <h1 className="text-5xl tracking-tight font-normal">{site.name}</h1>
       </header>
 
-      <section className="space-y-6 text-[1.1rem] leading-[1.95] text-muted font-normal max-w-[72ch]">
+      <section className="space-y-6 text-[1.1rem] leading-[1.95] text-foreground font-normal max-w-[72ch]">
         <p>
           Hi, I am Divyansh, and I’m a Machine Learning Engineer at Sprinklr, building scalable ML
           systems from the ground up. Currently, I’m working on Agentic and RAG systems.
