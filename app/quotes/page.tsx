@@ -41,7 +41,7 @@ export default function QuotesPage() {
                         {/* Quote text */}
                         <div className="pr-16">
                             <blockquote className="text-foreground leading-relaxed mb-4">
-                                &ldquo;{quote.text}&rdquo;
+                                {quote.text}
                             </blockquote>
                         </div>
 
