@@ -10,14 +10,25 @@ interface Props {
     };
 }
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
     const posts = getBlogPosts();
+    if (posts.length === 0) {
+        return [{ slug: 'coming-soon' }];
+    }
     return posts.map((post) => ({
         slug: post.slug,
     }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    if (params.slug === 'coming-soon') {
+        return {
+            title: 'Coming Soon',
+            description: 'Blog posts are coming soon.',
+        };
+    }
     const post = getBlogPost(params.slug);
     if (!post) return {};
     return {
@@ -27,6 +38,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default function BlogPostPage({ params }: Props) {
+    if (params.slug === 'coming-soon') {
+        return (
+            <div className="flex flex-col items-center justify-center min-h-[40vh] space-y-4 text-center font-geist-mono">
+                <h1 className="text-2xl font-bold">No posts yet</h1>
+                <p className="text-muted-foreground">
+                    Check back later for new content!
+                </p>
+                <Link
+                    href="/blogs"
+                    className="text-sm text-accent hover:underline"
+                >
+                    ← Back to blog list
+                </Link>
+            </div>
+        );
+    }
+
     const post = getBlogPost(params.slug);
 
     if (!post) {

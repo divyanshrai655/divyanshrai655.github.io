@@ -8,7 +8,7 @@ A clean, minimal personal website built with Next.js 14, TypeScript, Tailwind CS
 - 📝 Blog posts with MDX (Markdown + JSX)
 - ➗ LaTeX math rendering (KaTeX via client-side auto-render)
 - 📈 Interactive plots in MDX (Plotly component)
-- 💭 Twitter-style thoughts feed (JSON-based, no markdown needed)
+- � Curated quotes collection
 - 🏷️ Tag filtering for blog posts
 - ⏱️ Reading time estimation
 - 📱 Fully responsive (mobile-first)
@@ -64,26 +64,19 @@ published: true
 Your content here. You can use **Markdown** and JSX components!
 ```
 
-### Thoughts (Twitter-style)
+### Quotes
 
-Edit `content/thoughts.json` to add new thoughts:
+Edit `content/quotes.json` to add new quotes:
 
 ```json
 [
   {
-    "id": "unique-id",
-    "content": "Your thought goes here. Just plain text, no markdown needed!",
-    "date": "2024-12-29T10:30:00Z",
-    "tags": ["optional", "tags"]
+    "text": "Surpass your limits. Right here. Right now.",
+    "author": "Yami Sukehiro - Black Clover",
+    "category": "Anime"
   }
 ]
 ```
-
-**Tips for thoughts:**
-- Keep them short and punchy (like tweets)
-- Use `\n` for line breaks if needed
-- Tags are optional
-- IDs should be unique (e.g., `thought-001`, `thought-002`)
 
 ## Customization
 
@@ -93,7 +86,7 @@ Update these files with your information:
 
 1. `app/layout.tsx` - Site metadata, title, description
 2. `app/page.tsx` - About me content
-3. `app/thoughts/page.tsx` - Change "Your Name" and avatar initial
+3. `app/quotes/page.tsx` - Header title and description
 4. `lib/rss.ts` - RSS feed author info
 
 ### Theme Colors
@@ -199,8 +192,8 @@ Use the `Plotly` MDX component:
 │   ├── blogs/
 │   │   ├── page.tsx        # Blog list
 │   │   └── [slug]/page.tsx # Individual blog post
-│   ├── thoughts/
-│   │   └── page.tsx        # Twitter-style thoughts feed
+│   ├── quotes/
+│   │   └── page.tsx        # Quotes collection page
 │   ├── rss.xml/route.ts    # RSS feed
 │   ├── sitemap.ts          # Sitemap generation
 │   └── robots.ts           # Robots.txt
@@ -208,13 +201,14 @@ Use the `Plotly` MDX component:
 │   ├── Navigation.tsx      # Site navigation
 │   ├── ThemeProvider.tsx   # Dark mode context
 │   ├── MDXContent.tsx      # MDX renderer
-│   └── TagFilter.tsx       # Tag filtering UI
+│   ├── BlogList.tsx        # Blog listing component
+│   └── TableOfContents.tsx # Table of contents component
 ├── content/
 │   ├── blogs/*.mdx         # Blog posts (MDX)
-│   └── thoughts.json       # Thoughts feed (JSON)
+│   └── quotes.json         # Quotes data (JSON)
 ├── lib/
 │   ├── mdx.ts              # Blog MDX utilities
-│   ├── thoughts.ts         # Thoughts utilities
+│   ├── quotes.ts           # Quotes utilities
 │   └── rss.ts              # RSS generation
 └── public/                 # Static assets
 ```
