@@ -10,9 +10,7 @@ interface Props {
     };
 }
 
-export const dynamicParams = false;
-
-export function generateStaticParams() {
+export async function generateStaticParams() {
     const posts = getBlogPosts();
     return posts.map((post) => ({
         slug: post.slug,
