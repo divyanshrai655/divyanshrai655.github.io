@@ -13,6 +13,7 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>('dark');
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     // On mount, sync theme from localStorage or system preference.
@@ -26,8 +27,9 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
       const initialTheme = stored || (systemPrefersDark ? 'dark' : 'light');
       setTheme(initialTheme);
+      setMounted(true);
     } catch {
-      // ignore
+      setMounted(true);
     }
   }, []);
 
@@ -35,15 +37,18 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     try {
       document.documentElement.classList.remove('light', 'dark');
       document.documentElement.classList.add(theme);
-      try {
-        localStorage.setItem('theme', theme);
-      } catch {
-        // ignore
+      // Only save to localStorage after initial mount to avoid overwriting stored preference
+      if (mounted) {
+        try {
+          localStorage.setItem('theme', theme);
+        } catch {
+          // ignore
+        }
       }
     } catch {
       // ignore
     }
-  }, [theme]);
+  }, [theme, mounted]);
 
   const toggleTheme = () => {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
