@@ -13,7 +13,7 @@ export default function QuotesPage() {
         <div className="space-y-8 font-geist-mono">
             <header className="space-y-3">
                 <h1 className="text-4xl font-bold tracking-tight">Words that hit hard</h1>
-                <p className="text-muted leading-relaxed">
+                <p className="subheader leading-relaxed">
                     A collection of quotes that stayed with me.
                 </p>
             </header>

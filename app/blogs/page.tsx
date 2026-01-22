@@ -19,7 +19,7 @@ export default function BlogsPage() {
           <h1 className="text-4xl font-bold tracking-tight">Blog List</h1>
           <SubscribeButton />
         </div>
-        <p className="leading-relaxed">
+        <p className="subheader leading-relaxed">
           Findings and Personal Learnings
         </p>
       </header>

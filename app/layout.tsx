@@ -1,6 +1,13 @@
 import type { Metadata } from 'next';
 import { GeistMono } from 'geist/font/mono';
+import { Space_Grotesk } from 'next/font/google';
 import { ThemeProvider } from '@/components/ThemeProvider';
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-space-grotesk',
+  display: 'swap',
+});
 import { Navigation } from '@/components/Navigation';
 import { GoogleAnalytics } from '@/components/analytics/GoogleAnalytics';
 import { site, absoluteUrl } from '@/lib/site';
@@ -77,7 +84,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${GeistMono.variable}`}
+      className={`${GeistMono.variable} ${spaceGrotesk.variable}`}
       suppressHydrationWarning
     >
       <head>

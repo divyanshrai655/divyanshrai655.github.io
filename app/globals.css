@@ -44,10 +44,23 @@ body {
     'Liberation Mono', 'Courier New', monospace;
 }
 
-/* Headings with serif font */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-serif), Georgia, serif;
+/* Headings with Space Grotesk font */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  color: var(--foreground);
   font-weight: 700;
+}
+
+/* Subheader styling for consistent appearance across pages */
+.subheader {
+  color: var(--muted);
+  font-family: var(--font-geist-mono), monospace;
+  line-height: 1.6;
 }
 
 /* Syntax highlighting theme */
@@ -118,14 +131,24 @@ a {
 .prose h2,
 .prose h3,
 .prose h4 {
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  color: var(--foreground);
   font-weight: 700;
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
 
-.prose h1 { font-size: 2rem; }
-.prose h2 { font-size: 1.5rem; }
-.prose h3 { font-size: 1.25rem; }
+.prose h1 {
+  font-size: 2rem;
+}
+
+.prose h2 {
+  font-size: 1.5rem;
+}
+
+.prose h3 {
+  font-size: 1.25rem;
+}
 
 .prose p {
   margin-bottom: 1.25rem;

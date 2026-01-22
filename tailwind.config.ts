@@ -19,6 +19,7 @@ const config: Config = {
         border: 'var(--border)',
       },
       fontFamily: {
+        heading: ['var(--font-space-grotesk)', 'system-ui', 'sans-serif'],
         serif: ['var(--font-serif)', 'Georgia', 'serif'],
         mono: ['var(--font-geist-mono)', 'monospace'],
       },
