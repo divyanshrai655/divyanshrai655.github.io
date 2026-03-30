@@ -77,7 +77,7 @@ export function BlogList({ posts, allTags }: BlogListProps) {
         <div className="flex flex-col gap-10">
           {years.map((year) => (
             <section key={year} className="mb-8 font-geist-mono">
-              <h2 className="mb-4 text-xs font-mono text-muted-foreground">{year}</h2>
+              <h2 className="mb-4 text-lg font-mono text-muted-foreground">{year}</h2>
               <div className="flex flex-col">
                 {postsByYear[year].map((post) => (
                   <article key={post.slug} className="group">
@@ -86,7 +86,7 @@ export function BlogList({ posts, allTags }: BlogListProps) {
                       className="flex flex-col sm:flex-row sm:items-baseline py-3 border-b border-border/20 hover:bg-accent/5 transition-colors gap-2 sm:gap-4 group-last:border-0"
                     >
                       {/* Date */}
-                      <div className="w-24 text-sm text-muted-foreground shrink-0 font-mono">
+                      <div className="w-24 text-base text-muted-foreground shrink-0 font-mono">
                         {new Date(post.date).toLocaleDateString('en-US', {
                           month: 'short',
                           day: 'numeric',
@@ -95,7 +95,7 @@ export function BlogList({ posts, allTags }: BlogListProps) {
 
                       {/* Title */}
                       <div className="flex-grow min-w-0">
-                        <h3 className="text-sm font-normal text-foreground group-hover:text-accent transition-colors truncate font-mono">
+                        <h3 className="text-base font-normal text-foreground group-hover:text-accent transition-colors truncate font-mono">
                           {post.title}
                         </h3>
                       </div>

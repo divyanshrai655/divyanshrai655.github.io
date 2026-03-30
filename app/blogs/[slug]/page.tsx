@@ -65,7 +65,7 @@ export default function BlogPostPage({ params }: Props) {
         <article className="prose prose-zinc dark:prose-invert mx-auto max-w-none font-geist-mono">
             <Link
                 href="/blogs"
-                className="no-underline text-xs text-muted-foreground hover:text-accent mb-8 inline-block transition-colors"
+                className="no-underline text-sm text-muted-foreground hover:text-accent mb-8 inline-block transition-colors"
             >
                 ← Back to blog list
             </Link>
