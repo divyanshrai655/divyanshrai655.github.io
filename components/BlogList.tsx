@@ -43,27 +43,21 @@ export function BlogList({ posts, allTags }: BlogListProps) {
       {/* Filter Section */}
       {allTags.length > 0 && (
         <div className="flex flex-wrap items-center gap-2">
-          {/* <span className="text-sm text-muted">Filter:</span> */}
-          {selectedTags.length > 0 && (
-            <button
-              onClick={() => setSelectedTags([])}
-              className="rounded-full bg-border px-3 py-1 text-xs text-muted hover:bg-accent hover:text-white transition-colors"
-            >
-              Clear
-            </button>
-          )}
           {allTags.map((tag) => {
             const isSelected = selectedTags.includes(tag);
             return (
               <button
                 key={tag}
                 onClick={() => toggleTag(tag)}
-                className={`rounded-full px-3 py-1 text-xs transition-colors ${isSelected
+                className={`rounded-full px-3 py-1 text-xs transition-colors inline-flex items-center gap-1.5 ${isSelected
                   ? 'bg-accent text-white'
                   : 'bg-border text-muted hover:bg-accent hover:text-white'
                   }`}
               >
                 {tag}
+                {isSelected && (
+                  <span className="text-[10px] leading-none opacity-80 hover:opacity-100">✕</span>
+                )}
               </button>
             );
           })}
