@@ -19,7 +19,7 @@ export const site = {
   socials: {
     github: 'https://github.com/divyanshrai655',
     linkedin: 'https://www.linkedin.com/in/divyanshrai655/',
-    twitter: 'https://x.com/PLACEHOLDER',
+    twitter: 'https://x.com/DLazyLeopard',
   },
 } as const;
 
