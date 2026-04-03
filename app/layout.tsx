@@ -20,8 +20,7 @@ function PersonSchema() {
     name: site.name,
     url: site.url,
     image: absoluteUrl(site.imagePath),
-    email: `mailto:${site.email}`,
-    sameAs: [site.socials.github, site.socials.linkedin].filter(Boolean),
+    sameAs: [site.socials.github, site.socials.linkedin, site.socials.twitter].filter(Boolean),
     jobTitle: 'Machine Learning Engineer',
     worksFor: {
       '@type': 'Organization',

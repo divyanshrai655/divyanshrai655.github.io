@@ -14,11 +14,12 @@ export const site = {
   /** Third-person bio helps “name SEO” */
   description:
     'Divyansh Rai is a Machine Learning Engineer at Sprinklr, building and optimizing LLM-powered systems for production.',
-  email: 'divyansh2509@gmail.com',
+
   imagePath: '/images/profile.png',
   socials: {
     github: 'https://github.com/divyanshrai655',
     linkedin: 'https://www.linkedin.com/in/divyanshrai655/',
+    twitter: 'https://x.com/PLACEHOLDER',
   },
 } as const;
 

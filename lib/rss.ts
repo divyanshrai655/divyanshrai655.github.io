@@ -15,7 +15,6 @@ export function generateRssFeed(): string {
     copyright: `All rights reserved ${new Date().getFullYear()}, ${site.name}`,
     author: {
       name: site.name,
-      email: site.email,
       link: site.url,
     },
   });
