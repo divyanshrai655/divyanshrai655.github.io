@@ -47,7 +47,7 @@ export default function QuotesPage() {
 
                         {/* Author */}
                         <div className="mt-auto pt-4 border-t border-border">
-                            <p className="text-sm text-muted font-medium">— {quote.author}</p>
+                            <p className="text-sm text-muted font-medium">{quote.author}</p>
                         </div>
                     </div>
                 ))}
