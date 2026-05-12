@@ -14,7 +14,7 @@ export default function QuotesPage() {
             <header className="space-y-3">
                 <h1 className="text-4xl font-bold tracking-tight">Words that hit hard</h1>
                 <p className="subheader leading-relaxed">
-                    A collection of quotes that stayed with me.
+                    A collection of quotes that stayed with me (and some still sinking in).
                 </p>
             </header>
 
