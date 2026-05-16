@@ -21,7 +21,7 @@ const config: Config = {
       fontFamily: {
         heading: ['var(--font-space-grotesk)', 'system-ui', 'sans-serif'],
         serif: ['var(--font-serif)', 'Georgia', 'serif'],
-        mono: ['var(--font-geist-mono)', 'monospace'],
+        mono: ['var(--font-geist-mono)', 'var(--font-noto-sans)', 'monospace'],
       },
       typography: {
         DEFAULT: {

@@ -1,11 +1,17 @@
 import type { Metadata } from 'next';
 import { GeistMono } from 'geist/font/mono';
-import { Space_Grotesk } from 'next/font/google';
+import { Space_Grotesk, Noto_Sans } from 'next/font/google';
 import { ThemeProvider } from '@/components/ThemeProvider';
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   variable: '--font-space-grotesk',
+  display: 'swap',
+});
+
+const notoSans = Noto_Sans({
+  subsets: ['latin', 'devanagari'],
+  variable: '--font-noto-sans',
   display: 'swap',
 });
 import { Navigation } from '@/components/Navigation';
@@ -83,7 +89,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${GeistMono.variable} ${spaceGrotesk.variable}`}
+      className={`${GeistMono.variable} ${spaceGrotesk.variable} ${notoSans.variable}`}
       suppressHydrationWarning
     >
       <head>
