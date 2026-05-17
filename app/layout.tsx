@@ -98,9 +98,9 @@ export default function RootLayout({
       <body className="min-h-screen bg-background antialiased">
         <ThemeProvider>
           <GoogleAnalytics />
-          <div className="mx-auto w-full max-w-5xl px-5 py-10 sm:px-6 md:py-16">
+          <div className="mx-auto w-full max-w-5xl px-5 py-10 sm:px-6 md:py-16 flex flex-col min-h-screen">
             <Navigation />
-            <main>{children}</main>
+            <main className="flex-1">{children}</main>
             <footer className="mt-20 border-t border-border pt-8 text-sm text-muted">
               <p>© {new Date().getFullYear()} Divyansh Rai. All rights reserved.</p>
             </footer>

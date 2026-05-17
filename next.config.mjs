@@ -11,8 +11,8 @@ const skipChecks =
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   
-  // Enable static export for GitHub Pages
-  output: 'export',
+  // Enable static export for GitHub Pages (dev server doesn't support output:export with dynamic routes)
+  output: process.env.NODE_ENV === 'production' ? 'export' : undefined,
   
   // Set base path if deploying to github.io/repo-name (uncomment and set your repo name)
   // basePath: '/your-repo-name',
