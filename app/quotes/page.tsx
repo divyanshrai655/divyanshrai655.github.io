@@ -6,6 +6,12 @@ export const metadata: Metadata = {
     description: 'Inspiration which I draw from animes and books',
 };
 
+const categoryColors: Record<string, string> = {
+    Anime: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
+    Philosophy: 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200',
+    Wisdom: 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200',
+};
+
 export default function QuotesPage() {
     const quotes = getQuotes();
 
@@ -28,10 +34,9 @@ export default function QuotesPage() {
                         {quote.category && (
                             <div className="absolute top-4 right-4">
                                 <span
-                                    className={`text-xs px-2 py-1 rounded-full ${quote.category === 'Anime'
-                                        ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200'
-                                        : 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200'
-                                        }`}
+                                    className={`text-xs px-2 py-1 rounded-full ${
+                                        categoryColors[quote.category] || 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200'
+                                    }`}
                                 >
                                     {quote.category}
                                 </span>
