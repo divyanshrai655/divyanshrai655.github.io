@@ -216,3 +216,4 @@ Use the `Plotly` MDX component:
 ## License
 
 MIT License - feel free to use this template for your own site!
+
