@@ -24,34 +24,28 @@ export default function QuotesPage() {
                 </p>
             </header>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+            <div className="columns-1 md:columns-2 lg:columns-3 gap-6 mt-8">
                 {quotes.map((quote, index) => (
                     <div
                         key={index}
-                        className="group relative p-6 rounded-lg border border-border bg-background hover:border-accent transition-all duration-300 hover:shadow-lg"
+                        className="group relative mb-6 break-inside-avoid p-6 rounded-lg border border-border bg-background hover:border-accent transition-all duration-300 hover:shadow-lg"
                     >
-                        {/* Category badge */}
-                        {quote.category && (
-                            <div className="absolute top-4 right-4">
+                        {/* Quote text, with category badge floated inside it so text wraps around any label length */}
+                        <blockquote className="text-foreground leading-relaxed mb-4 whitespace-pre-line">
+                            {quote.category && (
                                 <span
-                                    className={`text-xs px-2 py-1 rounded-full ${
+                                    className={`float-right ml-3 mb-1 whitespace-nowrap text-xs px-2 py-1 rounded-full ${
                                         categoryColors[quote.category] || 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200'
                                     }`}
                                 >
                                     {quote.category}
                                 </span>
-                            </div>
-                        )}
-
-                        {/* Quote text */}
-                        <div className="pr-16">
-                            <blockquote className="text-foreground leading-relaxed mb-4 whitespace-pre-line">
-                                {quote.text}
-                            </blockquote>
-                        </div>
+                            )}
+                            {quote.text}
+                        </blockquote>
 
                         {/* Author */}
-                        <div className="mt-auto pt-4 border-t border-border">
+                        <div className="pt-4 border-t border-border">
                             <p className="text-sm text-muted font-medium">{quote.author}</p>
                         </div>
                     </div>
