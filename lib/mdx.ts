@@ -54,14 +54,19 @@ function getPostsFromDirectory(directory: string): PostMeta[] {
     return [];
   }
 
-  const dirStat = fs.statSync(fullPath);
+  // Directory mtime only changes on add/remove/rename, so also track each file's mtime
+  // to pick up in-place edits (e.g. flipping `published`).
+  const files = fs.readdirSync(fullPath).filter((file) => file.endsWith('.mdx'));
+  const mtimeMs = Math.max(
+    fs.statSync(fullPath).mtimeMs,
+    ...files.map((file) => fs.statSync(path.join(fullPath, file)).mtimeMs)
+  );
   const cached = postsCache.get(directory);
-  if (cached && cached.mtimeMs === dirStat.mtimeMs) {
+  if (cached && cached.mtimeMs === mtimeMs) {
     return cached.posts;
   }
 
   profileStart(`mdx:getPostsFromDirectory(${directory})`);
-  const files = fs.readdirSync(fullPath).filter((file) => file.endsWith('.mdx'));
 
   const posts = files
     .map((file) => {
@@ -83,7 +88,7 @@ function getPostsFromDirectory(directory: string): PostMeta[] {
     .filter((post) => post.published)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
-  postsCache.set(directory, { posts, mtimeMs: dirStat.mtimeMs });
+  postsCache.set(directory, { posts, mtimeMs });
   profileEnd(`mdx:getPostsFromDirectory(${directory})`);
   return posts;
 }
