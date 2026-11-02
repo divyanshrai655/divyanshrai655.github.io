@@ -1,4 +1,5 @@
-import { getBlogPost, getBlogPosts } from '@/lib/mdx';
+import { getBlogPost, getBlogPosts, type PostMeta } from '@/lib/mdx';
+import { site, absoluteUrl, ogImage, pageMetadata, personId } from '@/lib/site';
 import { notFound } from 'next/navigation';
 import { MDXContent } from '@/components/MDXContent';
 import type { Metadata } from 'next';
@@ -31,10 +32,47 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
     const post = getBlogPost(params.slug);
     if (!post) return {};
+    const base = pageMetadata({
+        path: `/blogs/${params.slug}`,
+        title: post.meta.title,
+        description: post.meta.description,
+    });
     return {
         title: post.meta.title,
         description: post.meta.description,
+        ...base,
+        openGraph: {
+            ...base.openGraph,
+            type: 'article',
+            publishedTime: new Date(post.meta.date).toISOString(),
+            authors: [site.url],
+            tags: post.meta.tags,
+        },
     };
+}
+
+function BlogPostingSchema({ slug, meta }: { slug: string; meta: PostMeta }) {
+    const url = absoluteUrl(`/blogs/${slug}`);
+    const jsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: meta.title,
+        description: meta.description,
+        datePublished: new Date(meta.date).toISOString(),
+        url,
+        mainEntityOfPage: url,
+        image: ogImage.url,
+        keywords: meta.tags,
+        author: { '@id': personId },
+    };
+
+    return (
+        <script
+            type="application/ld+json"
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+    );
 }
 
 export default function BlogPostPage({ params }: Props) {
@@ -63,6 +101,7 @@ export default function BlogPostPage({ params }: Props) {
 
     return (
         <article className="prose prose-zinc dark:prose-invert mx-auto max-w-none font-geist-mono">
+            <BlogPostingSchema slug={params.slug} meta={post.meta} />
             <Link
                 href="/blogs"
                 className="no-underline text-sm text-muted-foreground hover:text-accent mb-8 inline-block transition-colors"

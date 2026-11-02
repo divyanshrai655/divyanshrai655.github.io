@@ -29,4 +29,47 @@ export function absoluteUrl(path: string) {
   return `${site.url}${path.startsWith('/') ? '' : '/'}${path}`;
 }
 
+/** Stable JSON-LD id so posts can reference the site's Person as their author. */
+export const personId = `${site.url}/#person`;
+
+export const ogImage = {
+  url: absoluteUrl(site.imagePath),
+  width: 900,
+  height: 900,
+  alt: `${site.name} profile photo`,
+};
+
+/**
+ * Canonical + Open Graph + Twitter metadata for a page.
+ * Next.js replaces (not merges) a parent's `openGraph`/`twitter`, so every page sets the full block.
+ */
+export function pageMetadata({
+  path,
+  title,
+  description,
+}: {
+  path: string;
+  title: string;
+  description: string;
+}) {
+  return {
+    alternates: { canonical: path },
+    openGraph: {
+      title,
+      description,
+      url: absoluteUrl(path),
+      siteName: site.name,
+      locale: 'en_US',
+      type: 'website' as const,
+      images: [ogImage],
+    },
+    twitter: {
+      card: 'summary_large_image' as const,
+      title,
+      description,
+      images: [ogImage.url],
+    },
+  };
+}
+
 

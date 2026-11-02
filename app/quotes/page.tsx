@@ -1,9 +1,15 @@
 import { getQuotes } from '@/lib/quotes';
 import type { Metadata } from 'next';
+import { site, pageMetadata } from '@/lib/site';
 
 export const metadata: Metadata = {
     title: 'Quotes',
     description: 'Inspiration which I draw from animes and books',
+    ...pageMetadata({
+        path: '/quotes',
+        title: `Quotes | ${site.name}`,
+        description: 'Inspiration which I draw from animes and books',
+    }),
 };
 
 const categoryColors: Record<string, string> = {

@@ -16,13 +16,14 @@ const notoSans = Noto_Sans({
 });
 import { Navigation } from '@/components/Navigation';
 import { GoogleAnalytics } from '@/components/analytics/GoogleAnalytics';
-import { site, absoluteUrl } from '@/lib/site';
+import { site, absoluteUrl, ogImage, personId } from '@/lib/site';
 import './globals.css';
 
 function PersonSchema() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Person',
+    '@id': personId,
     name: site.name,
     url: site.url,
     image: absoluteUrl(site.imagePath),
@@ -50,24 +51,15 @@ export const metadata: Metadata = {
   },
   description: site.description,
   metadataBase: new URL(site.url),
-  alternates: {
-    canonical: '/',
-  },
+  // No canonical or og:url here: they would be inherited by every page.
+  // Each page sets its own via `pageMetadata`.
   openGraph: {
     title: site.name,
     description: site.description,
-    url: site.url,
     siteName: site.name,
     locale: 'en_US',
     type: 'website',
-    images: [
-      {
-        url: absoluteUrl(site.imagePath),
-        width: 900,
-        height: 900,
-        alt: `${site.name} profile photo`,
-      },
-    ],
+    images: [ogImage],
   },
   robots: {
     index: true,
@@ -77,7 +69,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: site.name,
     description: site.description,
-    images: [absoluteUrl(site.imagePath)],
+    images: [ogImage.url],
   },
 };
 

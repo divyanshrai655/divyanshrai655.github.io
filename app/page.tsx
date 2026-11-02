@@ -1,4 +1,11 @@
-import { site } from '@/lib/site';
+import type { Metadata } from 'next';
+import { site, pageMetadata } from '@/lib/site';
+
+export const metadata: Metadata = pageMetadata({
+  path: '/',
+  title: site.name,
+  description: site.description,
+});
 
 export default function AboutPage() {
   return (

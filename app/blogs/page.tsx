@@ -2,10 +2,16 @@ import { getBlogPosts, getAllTags } from '@/lib/mdx';
 import { BlogList } from '@/components/BlogList';
 import type { Metadata } from 'next';
 import { SubscribeButton } from '@/components/SubscribeButton';
+import { site, pageMetadata } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Blogs',
   description: 'My personal collection of ideas, coding insights, and tips.',
+  ...pageMetadata({
+    path: '/blogs',
+    title: `Blogs | ${site.name}`,
+    description: 'My personal collection of ideas, coding insights, and tips.',
+  }),
 };
 
 export default function BlogsPage() {
