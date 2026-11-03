@@ -104,9 +104,9 @@ export default function BlogPostPage({ params }: Props) {
             <BlogPostingSchema slug={params.slug} meta={post.meta} />
             <Link
                 href="/blogs"
-                className="no-underline text-sm text-muted-foreground hover:text-accent mb-8 inline-block transition-colors"
+                className="not-prose mb-8 -ml-1 inline-block font-sans text-sm !text-muted !no-underline transition-colors hover:!text-foreground"
             >
-                ← Back to blog list
+                ← All posts
             </Link>
 
             <header className="mb-12 not-prose">

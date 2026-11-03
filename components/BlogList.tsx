@@ -25,19 +25,6 @@ export function BlogList({ posts, allTags }: BlogListProps) {
     return post.tags?.some((tag) => selectedTags.includes(tag));
   });
 
-  // Group posts by year
-  const postsByYear = filteredPosts.reduce((acc, post) => {
-    const year = new Date(post.date).getFullYear().toString();
-    if (!acc[year]) {
-      acc[year] = [];
-    }
-    acc[year].push(post);
-    return acc;
-  }, {} as Record<string, PostMeta[]>);
-
-  // Sort years descending
-  const years = Object.keys(postsByYear).sort((a, b) => Number(b) - Number(a));
-
   return (
     <div className="space-y-12">
       {/* Filter Section */}
@@ -68,52 +55,26 @@ export function BlogList({ posts, allTags }: BlogListProps) {
       {filteredPosts.length === 0 ? (
         <p className="text-muted py-8">No posts found.</p>
       ) : (
-        <div className="flex flex-col gap-10">
-          {years.map((year) => (
-            <section key={year} className="mb-8 font-geist-mono">
-              <h2 className="mb-4 text-lg font-mono text-muted-foreground">{year}</h2>
-              <div className="flex flex-col">
-                {postsByYear[year].map((post) => (
-                  <article key={post.slug} className="group">
-                    <Link
-                      href={`/blogs/${post.slug}`}
-                      className="flex flex-col sm:flex-row sm:items-baseline py-3 border-b border-border/20 hover:bg-accent/5 transition-colors gap-2 sm:gap-4 group-last:border-0"
-                    >
-                      {/* Date */}
-                      <div className="w-24 text-base text-muted-foreground shrink-0 font-mono">
-                        {new Date(post.date).toLocaleDateString('en-US', {
-                          month: 'short',
-                          day: 'numeric',
-                        })}
-                      </div>
-
-                      {/* Title */}
-                      <div className="flex-grow min-w-0">
-                        <h3 className="text-base font-normal text-foreground group-hover:text-accent transition-colors truncate font-mono">
-                          {post.title}
-                        </h3>
-                      </div>
-
-                      {/* Tags */}
-                      {post.tags && post.tags.length > 0 && (
-                        <div className="flex flex-wrap gap-2 shrink-0 sm:justify-end mt-1 sm:mt-0">
-                          {post.tags.map((tag) => (
-                            <span
-                              key={tag}
-                              className="px-2 py-0.5 rounded-[4px] border border-border/40 text-[10px] text-muted-foreground font-mono transition-colors group-hover:border-accent/50 group-hover:text-accent"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                      )}
-                    </Link>
-                  </article>
-                ))}
-              </div>
-            </section>
+        <ul className="flex flex-col gap-7 font-sans">
+          {filteredPosts.map((post) => (
+            <li key={post.slug}>
+              <time dateTime={post.date} className="block text-sm text-muted">
+                {new Date(post.date).toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'short',
+                  day: 'numeric',
+                  timeZone: 'UTC',
+                })}
+              </time>
+              <Link
+                href={`/blogs/${post.slug}`}
+                className="mt-1 inline-block text-[1.375rem] leading-snug text-[#2a6fd1] transition-colors hover:underline hover:underline-offset-4 dark:text-[#7aaef5]"
+              >
+                {post.title}
+              </Link>
+            </li>
           ))}
-        </div>
+        </ul>
       )}
     </div>
   );
