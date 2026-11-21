@@ -11,7 +11,7 @@ export default function AboutPage() {
   return (
     <div className="space-y-8 font-geist-mono">
       <section className="space-y-6 text-[1.1rem] leading-[1.95] text-foreground font-normal max-w-[72ch] mx-auto">
-        <h1 className="text-[1.1rem] font-normal">
+        <h1 className="font-geist-mono text-[1.1rem] font-normal">
           Hi, I am Divyansh!
         </h1>
         <p>
