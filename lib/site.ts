@@ -15,7 +15,7 @@ export const site = {
   description:
     'Divyansh Rai is a Machine Learning Engineer at Sprinklr, building and optimizing LLM-powered systems for production.',
 
-  imagePath: '/images/profile.png',
+  imagePath: '/images/profile.jpg',
   socials: {
     github: 'https://github.com/divyanshrai655',
     linkedin: 'https://www.linkedin.com/in/divyanshrai655/',
@@ -34,8 +34,8 @@ export const personId = `${site.url}/#person`;
 
 export const ogImage = {
   url: absoluteUrl(site.imagePath),
-  width: 900,
-  height: 900,
+  width: 800,
+  height: 1050,
   alt: `${site.name} profile photo`,
 };
 

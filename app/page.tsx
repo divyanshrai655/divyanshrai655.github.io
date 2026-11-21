@@ -11,9 +11,9 @@ export default function AboutPage() {
   return (
     <div className="space-y-8 font-geist-mono">
       <section className="space-y-6 text-[1.1rem] leading-[1.95] text-foreground font-normal max-w-[72ch] mx-auto">
-        <p>
+        <h1 className="text-[1.1rem] font-normal">
           Hi, I am Divyansh!
-        </p>
+        </h1>
         <p>
           I&apos;m a Machine Learning Engineer at Sprinklr, building scalable ML
           systems from the ground up. Currently, I&apos;m working on Agentic and RAG systems.
